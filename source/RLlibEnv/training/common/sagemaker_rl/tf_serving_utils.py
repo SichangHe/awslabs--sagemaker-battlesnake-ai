@@ -1,6 +1,7 @@
-import tensorflow as tf
 import os
 import re
+
+import tensorflow as tf
 
 
 def atoi(text):
@@ -8,7 +9,7 @@ def atoi(text):
 
 
 def natural_keys(text):
-    return [atoi(c) for c in re.split('(\d+)', text)]
+    return [atoi(c) for c in re.split("(\d+)", text)]
 
 
 def change_permissions_recursive(path, mode):
@@ -20,10 +21,12 @@ def change_permissions_recursive(path, mode):
 
 
 def export_tf_serving(agent, output_dir):
-    agent.get_policy('policy_0').export_model(os.path.join(output_dir, "1"))
+    agent.get_policy("policy_0").export_model(os.path.join(output_dir, "1"))
     print("\n\nSaved TensorFlow serving model!\n")
-    #SPERRY
-'''
+    # SPERRY
+
+
+"""
     policy = agent.local_evaluator.policy_map["default"]
     policy = agent.get_policy('policy_0')
     input_signature = {}
@@ -47,4 +50,4 @@ def export_tf_serving(agent, output_dir):
             policy.sess, [tf.saved_model.tag_constants.SERVING],
             signature_def_map=signature_def_map)
         builder.save()
-'''
+"""
