@@ -15,11 +15,17 @@ import os
 import time
 
 import numpy as np
+
 from battlesnake_gym.snake import Snake
 from battlesnake_gym.snake_gym import BattlesnakeGym
 
 
-def simulate_snake(env, actions, render=False, break_with_done=True):
+def simulate_snake(
+    env: BattlesnakeGym,
+    actions: list,
+    render=False,
+    break_with_done=True,
+):
     """
     Helper function to run certain actions based in an environment.
 

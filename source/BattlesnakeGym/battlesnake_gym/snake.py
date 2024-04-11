@@ -37,9 +37,11 @@ class Snake:
 
     FULL_HEALTH = 100
 
-    def __init__(self, starting_position, map_size):
+    def __init__(self, starting_position: tuple[int, int], map_size: tuple[int, int]):
         self.health = self.FULL_HEALTH
-        self.locations = []  # Head of the snake is element n and the end is element 0
+        self.locations: list[tuple[int, int]] = (
+            []
+        )  # Head of the snake is element n and the end is element 0
         self.locations.append(starting_position)
         self.facing_direction = None
         self._is_alive = True
@@ -330,13 +332,20 @@ class Snakes:
         Parameter to force snakes to spawn in certain positions. Used for testing
     """
 
-    def __init__(self, map_size, number_of_snakes, snake_spawn_locations=[]):
+    def __init__(
+        self,
+        map_size: tuple[int, int],
+        number_of_snakes: int,
+        snake_spawn_locations: list[tuple[int, int]] = [],
+    ):
         self.map_size = map_size
         self.number_of_snakes = number_of_snakes
         self.snakes = self._initialise_snakes(number_of_snakes, snake_spawn_locations)
 
-    def _initialise_snakes(self, number_of_snakes, snake_spawn_locations):
-        snakes = []
+    def _initialise_snakes(
+        self, number_of_snakes: int, snake_spawn_locations: list[tuple[int, int]]
+    ):
+        snakes: list[Snake] = []
 
         if len(snake_spawn_locations) == 0:
             starting_positions = get_random_coordinates(self.map_size, number_of_snakes)

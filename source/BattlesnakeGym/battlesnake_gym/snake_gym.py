@@ -357,7 +357,7 @@ class BattlesnakeGym(gym.Env):
         """
 
         # setup reward dict
-        reward = {}
+        reward: dict[int, int] = {}
         snake_info = {}
 
         # DEBUGING
@@ -463,7 +463,7 @@ class BattlesnakeGym(gym.Env):
         else:
             done = False
 
-        snake_alive_dict = {
+        snake_alive_dict: dict[int, bool] = {
             i: a for i, a in enumerate(np.logical_not(snakes_alive).tolist())
         }
         self.turn_count += 1
